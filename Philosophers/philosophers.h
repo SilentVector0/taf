@@ -6,7 +6,7 @@
 /*   By: msuter <msuter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 18:50:34 by msuter            #+#    #+#             */
-/*   Updated: 2026/05/06 19:17:55 by msuter           ###   ########.fr       */
+/*   Updated: 2026/06/01 14:23:06 by msuter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,6 @@ long	ft_atoi_c(const char *str);
 void	verif_and_attrib_gen(int argc, char **argv, t_gen *gen);
 void	cleanup(t_gen *gen, int i);
 void	stop_simu(t_gen *gen);
+void	put_message(t_philo *philo, char *message);
 
 #endif

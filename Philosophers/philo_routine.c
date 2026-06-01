@@ -6,7 +6,7 @@
 /*   By: msuter <msuter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 11:19:11 by msuter            #+#    #+#             */
-/*   Updated: 2026/06/01 12:58:26 by msuter           ###   ########.fr       */
+/*   Updated: 2026/06/01 14:31:16 by msuter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void *eat(t_philo *philo)
 		
 	}
 	pthread_mutex_lock(&philo->left_fork);
+	put_message(philo, "has taken a fork");
 	pthread_mutex_lock(&philo->gen->protect_p);
 	if (philo->gen->p_running == 1)
 	{
@@ -27,6 +28,7 @@ void *eat(t_philo *philo)
 	}
 	pthread_mutex_unlock(&philo->gen->protect_p);
 	pthread_mutex_lock(&philo->right_fork);
+	put_message(philo, "has taken a fork");
 	pthread_mutex_lock(&philo->gen->protect_p);
 	if (philo->gen->p_running == 1)
 	{
@@ -35,6 +37,9 @@ void *eat(t_philo *philo)
 		return (NULL);
 	}
 	pthread_mutex_unlock(&philo->gen->protect_p);
+	put_message(philo, "is eating");
+	pthread_mutex_unlock(&philo->left_fork);
+	pthread_mutex_unlock(&philo->right_fork);
 }
 
 void	*philo_routine(void *arg)

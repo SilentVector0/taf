@@ -6,22 +6,27 @@
 /*   By: msuter <msuter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 18:50:23 by msuter            #+#    #+#             */
-/*   Updated: 2026/06/01 13:19:49 by msuter           ###   ########.fr       */
+/*   Updated: 2026/06/01 14:30:25 by msuter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-void	put_message(t_gen *gen, char *message)
+void	put_message(t_philo *philo, char *message)
 {
 	struct	timeval	t;
 	long	time;
 
-	pthread_mutex_lock(&gen->logs);
+	pthread_mutex_lock(&philo->gen->logs);
 	if (gettimeofday(&t, NULL) != 0)
-		error("erreur lors de la recuperation de l'heure\n");
+	{
+		printf("erreur lors de la recuperation de l'heure\n");
+		pthread_mutex_unlock(&philo->gen->logs);
+		exit (1);
+	}
 	time = (t.tv_sec * 1000) + (t.tv_sec / 1000);
-	printf("%ld, %d, %s\n", time, gen->philo->num, message);
+	printf("%ld %d %s\n", time, philo->num, message);
+	pthread_mutex_unlock(&philo->gen->logs);
 }
 
 void	stop_simu(t_gen *gen)
