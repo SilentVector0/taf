@@ -6,7 +6,7 @@
 /*   By: msuter <msuter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 18:50:23 by msuter            #+#    #+#             */
-/*   Updated: 2026/06/01 14:30:25 by msuter           ###   ########.fr       */
+/*   Updated: 2026/06/01 15:57:38 by msuter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	put_message(t_philo *philo, char *message)
 		pthread_mutex_unlock(&philo->gen->logs);
 		exit (1);
 	}
-	time = (t.tv_sec * 1000) + (t.tv_sec / 1000);
+	time = (t.tv_sec * 1000) + (t.tv_usec / 1000);
 	printf("%ld %d %s\n", time, philo->num, message);
 	pthread_mutex_unlock(&philo->gen->logs);
 }
