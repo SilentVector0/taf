@@ -6,7 +6,7 @@
 /*   By: msuter <msuter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 18:50:34 by msuter            #+#    #+#             */
-/*   Updated: 2026/06/01 14:23:06 by msuter           ###   ########.fr       */
+/*   Updated: 2026/06/02 11:01:43 by msuter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct s_gen t_gen;
 typedef struct s_philo
 {
 	int				num;
+	int				nb_eat;
 	long			last_meal;
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;

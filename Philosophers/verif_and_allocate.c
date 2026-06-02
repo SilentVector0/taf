@@ -6,7 +6,7 @@
 /*   By: msuter <msuter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 13:51:34 by msuter            #+#    #+#             */
-/*   Updated: 2026/06/01 15:57:23 by msuter           ###   ########.fr       */
+/*   Updated: 2026/06/02 11:02:26 by msuter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ static void	allocate_philo(t_gen	*gen)
 		error("erreur lors de l'allocation de mon tableau philo\n");
 	while (i < gen->nb_philo)
 	{
+		gen->philo[i].nb_eat = 0;
 		gen->philo[i].num = i;
 		gen->philo[i].last_meal = (t.tv_sec * 1000) + (t.tv_usec / 1000);
 		gen->philo[i].left_fork = &gen->fork[i];
