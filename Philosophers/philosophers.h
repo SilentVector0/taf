@@ -6,7 +6,7 @@
 /*   By: msuter <msuter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 18:50:34 by msuter            #+#    #+#             */
-/*   Updated: 2026/06/02 11:01:43 by msuter           ###   ########.fr       */
+/*   Updated: 2026/06/02 22:47:04 by msuter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,7 @@ void	verif_and_attrib_gen(int argc, char **argv, t_gen *gen);
 void	cleanup(t_gen *gen, int i);
 void	stop_simu(t_gen *gen);
 void	put_message(t_philo *philo, char *message);
+void	*case_solo_philo(t_philo *philo);
+void	*eat(t_philo *philo);
 
 #endif
