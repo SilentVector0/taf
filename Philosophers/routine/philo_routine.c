@@ -6,7 +6,7 @@
 /*   By: msuter <msuter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 11:19:11 by msuter            #+#    #+#             */
-/*   Updated: 2026/06/02 22:47:20 by msuter           ###   ########.fr       */
+/*   Updated: 2026/06/04 23:52:03 by msuter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,18 @@ void	*unlock_my_fork(t_philo *philo, int nb)
 	return (NULL);
 }
 
+int	verif_prog(t_philo *philo)
+{
+	pthread_mutex_lock(&philo->gen->protect_p);
+		if (philo->gen->p_running == 1)
+		{
+			pthread_mutex_unlock(&philo->gen->protect_p);
+			return (1);
+		}
+		pthread_mutex_unlock(&philo->gen->protect_p);
+	return (0);
+}
+
 void	*philo_routine(void *arg)
 {
 	t_philo *philo;
@@ -37,12 +49,14 @@ void	*philo_routine(void *arg)
 		usleep(1000);
 	while (1)
 	{
-		pthread_mutex_lock(&philo->gen->protect_p);
-		if (philo->gen->p_running == 1)
-		{
-			pthread_mutex_unlock(&philo->gen->protect_p);
+		if (verif_prog(philo) == 1)
 			return (NULL);
-		}
-		pthread_mutex_unlock(&philo->gen->protect_p);
+		eat(philo);
+		if (verif_prog(philo) == 1)
+			return (NULL);
+		my_sleep(philo);
+		if (verif_prog(philo) == 1)
+			return (NULL);
+		think(philo);
 	}
 }

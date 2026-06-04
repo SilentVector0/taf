@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sleep.c                                            :+:      :+:    :+:   */
+/*   sleep_and_think.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msuter <msuter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 23:21:30 by msuter            #+#    #+#             */
-/*   Updated: 2026/06/03 00:02:45 by msuter           ###   ########.fr       */
+/*   Updated: 2026/06/04 23:45:09 by msuter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-void	*sleep(t_philo *philo)
+void	*think(t_philo *philo)
+{
+	put_message(philo, "is thinking");
+	return (NULL);
+}
+
+void	*my_sleep(t_philo *philo)
 {
 	struct	timeval	t;
 	long	current_time;

@@ -6,7 +6,7 @@
 /*   By: msuter <msuter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 18:50:34 by msuter            #+#    #+#             */
-/*   Updated: 2026/06/02 23:22:22 by msuter           ###   ########.fr       */
+/*   Updated: 2026/06/04 23:45:15 by msuter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	stop_simu(t_gen *gen);
 void	put_message(t_philo *philo, char *message);
 void	*case_solo_philo(t_philo *philo);
 void	*eat(t_philo *philo);
-void	*sleep(t_philo *philo);
+void	*my_sleep(t_philo *philo);
+void	*think(t_philo *philo);
 
 #endif
