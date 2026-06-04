@@ -6,7 +6,7 @@
 /*   By: msuter <msuter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 18:50:29 by msuter            #+#    #+#             */
-/*   Updated: 2026/05/29 11:19:27 by msuter           ###   ########.fr       */
+/*   Updated: 2026/06/05 00:50:27 by msuter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int main (int argc, char **argv)
 		}
 		i++;
 	}
-	if (pthread_create(&gen.state, NULL, verif_philo, &gen))
+	if (pthread_create(&gen.state, NULL, monitor, &gen))
 	{
 		stop_simu(&gen);
 		cleanup(&gen, i - 1);
