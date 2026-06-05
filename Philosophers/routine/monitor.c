@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   monior.c                                           :+:      :+:    :+:   */
+/*   monitor.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msuter <msuter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 00:01:26 by msuter            #+#    #+#             */
-/*   Updated: 2026/06/05 00:47:40 by msuter           ###   ########.fr       */
+/*   Updated: 2026/06/05 18:14:34 by msuter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	all_eating(t_gen *gen)
 	i = 0;
 	while (i != gen->nb_philo)
 	{
-		if (gen->must_eat && gen->philo[i].nb_eat == gen->must_eat)
+		if (gen->must_eat && gen->philo[i].nb_eat >= gen->must_eat)
 			i++;
 		else
 			return (1);

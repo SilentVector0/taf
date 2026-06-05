@@ -6,7 +6,7 @@
 /*   By: msuter <msuter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 22:46:16 by msuter            #+#    #+#             */
-/*   Updated: 2026/06/05 13:45:56 by msuter           ###   ########.fr       */
+/*   Updated: 2026/06/05 18:39:57 by msuter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,16 +54,16 @@ void	*eat(t_philo *philo)
 	if (philo->right_fork == philo->left_fork)
 		return (case_solo_philo(philo));
 	pthread_mutex_lock(philo->left_fork);
+	if (verif_prog(philo) == 1)
+		return (unlock_my_fork(philo, 1, 0));
 	put_message(philo, "has taken a fork");
-	pthread_mutex_lock(&philo->gen->protect_p);
-	if (philo->gen->p_running == 1)
-		return (unlock_my_fork(philo, 1));
-	pthread_mutex_unlock(&philo->gen->protect_p);
 	pthread_mutex_lock(philo->right_fork);
+	if (verif_prog(philo) == 1)
+		return (unlock_my_fork(philo, 2, 0));
 	put_message(philo, "has taken a fork");
 	pthread_mutex_lock(&philo->gen->protect_p);
 	if (philo->gen->p_running == 1)
-		return (unlock_my_fork(philo, 2));
+		return (unlock_my_fork(philo, 2, 1));
 	pthread_mutex_unlock(&philo->gen->protect_p);
 	put_message(philo, "is eating");
 	counter_reset(philo);

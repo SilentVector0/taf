@@ -6,22 +6,24 @@
 /*   By: msuter <msuter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 11:19:11 by msuter            #+#    #+#             */
-/*   Updated: 2026/06/05 14:15:27 by msuter           ###   ########.fr       */
+/*   Updated: 2026/06/05 18:38:33 by msuter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-void	*unlock_my_fork(t_philo *philo, int nb)
+void	*unlock_my_fork(t_philo *philo, int nb, int prot)
 {
 	if (nb == 1)
 	{
-		pthread_mutex_unlock(&philo->gen->protect_p);
+		if (prot == 1)
+			pthread_mutex_unlock(&philo->gen->protect_p);
 		pthread_mutex_unlock(philo->left_fork);
 	}
 	else
 	{
-		pthread_mutex_unlock(&philo->gen->protect_p);
+		if (prot == 1)
+			pthread_mutex_unlock(&philo->gen->protect_p);
 		pthread_mutex_unlock(philo->left_fork);
 		pthread_mutex_unlock(philo->right_fork);
 	}
@@ -44,7 +46,6 @@ void	*philo_routine(void *arg)
 {
 	t_philo *philo;
 
-	printf("hello\n");
 	philo = arg;
 	if (philo->num % 2 == 0)
 		usleep(1000);

@@ -6,7 +6,7 @@
 /*   By: msuter <msuter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 13:51:34 by msuter            #+#    #+#             */
-/*   Updated: 2026/06/02 11:02:26 by msuter           ###   ########.fr       */
+/*   Updated: 2026/06/05 17:24:47 by msuter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,10 @@ void	verif_and_attrib_gen(int	argc, char **argv, t_gen *gen)
 		gen->must_eat = -1;
 	else
 		gen->must_eat = ft_atoi_c(argv[5]);
+	if (pthread_mutex_init(&gen->protect_p, NULL) != 0 || pthread_mutex_init(&gen->logs, NULL) != 0)
+	{
+		exit(1);
+	}
 	allocate_fork(gen);
 	allocate_philo(gen);
 }
