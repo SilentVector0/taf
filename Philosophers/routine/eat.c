@@ -6,7 +6,7 @@
 /*   By: msuter <msuter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 22:46:16 by msuter            #+#    #+#             */
-/*   Updated: 2026/06/02 23:05:40 by msuter           ###   ########.fr       */
+/*   Updated: 2026/06/05 13:45:56 by msuter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*case_solo_philo(t_philo *philo)
 {
-	pthread_mutex_lock(&philo->left_fork);
+	pthread_mutex_lock(philo->left_fork);
 	put_message(philo, "has taken a fork");
 	while (1)
 	{
@@ -22,7 +22,7 @@ void	*case_solo_philo(t_philo *philo)
 		if (philo->gen->p_running == 1)
 		{
 			pthread_mutex_unlock(&philo->gen->protect_p);
-			pthread_mutex_unlock(&philo->left_fork);
+			pthread_mutex_unlock(philo->left_fork);
 			break ;
 		}
 		pthread_mutex_unlock(&philo->gen->protect_p);
@@ -53,13 +53,13 @@ void	*eat(t_philo *philo)
 {
 	if (philo->right_fork == philo->left_fork)
 		return (case_solo_philo(philo));
-	pthread_mutex_lock(&philo->left_fork);
+	pthread_mutex_lock(philo->left_fork);
 	put_message(philo, "has taken a fork");
 	pthread_mutex_lock(&philo->gen->protect_p);
 	if (philo->gen->p_running == 1)
 		return (unlock_my_fork(philo, 1));
 	pthread_mutex_unlock(&philo->gen->protect_p);
-	pthread_mutex_lock(&philo->right_fork);
+	pthread_mutex_lock(philo->right_fork);
 	put_message(philo, "has taken a fork");
 	pthread_mutex_lock(&philo->gen->protect_p);
 	if (philo->gen->p_running == 1)
@@ -68,7 +68,7 @@ void	*eat(t_philo *philo)
 	put_message(philo, "is eating");
 	counter_reset(philo);
 	usleep(philo->gen->ti_to_eat * 1000);
-	pthread_mutex_unlock(&philo->left_fork);
-	pthread_mutex_unlock(&philo->right_fork);
+	pthread_mutex_unlock(philo->left_fork);
+	pthread_mutex_unlock(philo->right_fork);
 	return (NULL);
 }

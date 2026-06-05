@@ -6,7 +6,7 @@
 /*   By: msuter <msuter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 18:50:34 by msuter            #+#    #+#             */
-/*   Updated: 2026/06/05 00:50:23 by msuter           ###   ########.fr       */
+/*   Updated: 2026/06/05 13:48:31 by msuter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,6 @@ void	*think(t_philo *philo);
 int		verif_prog(t_philo *philo);
 void	*philo_routine(void *arg);
 void	*monitor(void *arg);
+void	*unlock_my_fork(t_philo *philo, int nb);
 
 #endif
