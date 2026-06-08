@@ -6,7 +6,7 @@
 /*   By: msuter <msuter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 00:01:26 by msuter            #+#    #+#             */
-/*   Updated: 2026/06/06 12:54:15 by msuter           ###   ########.fr       */
+/*   Updated: 2026/06/08 09:48:53 by msuter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,26 @@ int	all_eating(t_gen *gen)
 	return (0);
 }
 
+void	gestion_p_run(t_gen *gen, long time, int i)
+{
+	pthread_mutex_lock(&gen->protect_p);
+	if (time - gen->philo[i].last_meal > gen->ti_to_die)
+	{
+		put_message(&gen->philo[i], "died");
+		gen->p_running = 1;
+	}
+	if (all_eating(gen) == 0)
+		gen->p_running = 1;
+	pthread_mutex_unlock(&gen->protect_p);
+}
+
 void	*monitor(void *arg)
 {
-	struct	timeval	t;
-	long	time;
-	t_gen	*gen;
-	int		i;
+	struct timeval	t;
+	long			time;
+	t_gen			*gen;
+	int				i;
+
 	gen = arg;
 	while (1)
 	{
@@ -43,21 +57,9 @@ void	*monitor(void *arg)
 		{
 			if (verif_prog(&gen->philo[i]) == 1)
 				return (NULL);
-			if (gettimeofday(&t, NULL) != 0)
-			{
-				printf("erreur lors de la recuperation de l'heure\n");
-				exit (1);
-			}
+			get_time(&t);
 			time = (t.tv_sec * 1000) + (t.tv_usec / 1000);
-			pthread_mutex_lock(&gen->protect_p);
-			if (time - gen->philo[i].last_meal > gen->ti_to_die)
-			{
-				put_message(&gen->philo[i], "died");
-				gen->p_running = 1;
-			}
-			if (all_eating(gen) == 0)
-				gen->p_running = 1;
-			pthread_mutex_unlock(&gen->protect_p);
+			gestion_p_run(gen, time, i);
 			i++;
 		}
 		usleep(3000);

@@ -6,7 +6,7 @@
 /*   By: msuter <msuter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 22:46:16 by msuter            #+#    #+#             */
-/*   Updated: 2026/06/05 18:39:57 by msuter           ###   ########.fr       */
+/*   Updated: 2026/06/08 10:36:12 by msuter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ void	*case_solo_philo(t_philo *philo)
 
 void	counter_reset(t_philo *philo)
 {
-	struct	timeval	t;
-	long	time;
+	struct timeval	t;
+	long			time;
 
 	pthread_mutex_lock(&philo->gen->protect_p);
 	if (gettimeofday(&t, NULL) != 0)

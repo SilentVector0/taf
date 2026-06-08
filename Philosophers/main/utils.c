@@ -6,7 +6,7 @@
 /*   By: msuter <msuter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 18:50:23 by msuter            #+#    #+#             */
-/*   Updated: 2026/06/05 17:26:10 by msuter           ###   ########.fr       */
+/*   Updated: 2026/06/08 09:57:45 by msuter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	put_message(t_philo *philo, char *message)
 {
-	struct	timeval	t;
-	long	time;
+	struct timeval	t;
+	long			time;
 
 	pthread_mutex_lock(&philo->gen->logs);
 	if (gettimeofday(&t, NULL) != 0)
@@ -38,11 +38,6 @@ void	stop_simu(t_gen *gen)
 
 void	cleanup(t_gen *gen, int i)
 {
-	while (i >= 0)
-	{
-		pthread_join(gen->philo[i].thread, NULL);
-		i--;
-	}
 	i = 0;
 	while (i < gen->nb_philo)
 	{

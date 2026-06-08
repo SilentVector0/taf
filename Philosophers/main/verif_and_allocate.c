@@ -6,7 +6,7 @@
 /*   By: msuter <msuter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 13:51:34 by msuter            #+#    #+#             */
-/*   Updated: 2026/06/05 17:24:47 by msuter           ###   ########.fr       */
+/*   Updated: 2026/06/08 09:57:30 by msuter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static void	allocate_fork(t_gen	*gen)
 static void	allocate_philo(t_gen	*gen)
 {
 	struct timeval	t;
-	int	i;
+	int				i;
 
 	i = 0;
 	if (gettimeofday(&t, NULL) != 0)
@@ -70,7 +70,7 @@ static void	allocate_philo(t_gen	*gen)
 	}
 }
 
-void	verif_and_attrib_gen(int	argc, char **argv, t_gen *gen)
+void	verif_and_attrib_gen(int argc, char **argv, t_gen *gen)
 {
 	if (!(argc >= 5 && argc <= 6))
 	{
@@ -88,7 +88,8 @@ void	verif_and_attrib_gen(int	argc, char **argv, t_gen *gen)
 		gen->must_eat = -1;
 	else
 		gen->must_eat = ft_atoi_c(argv[5]);
-	if (pthread_mutex_init(&gen->protect_p, NULL) != 0 || pthread_mutex_init(&gen->logs, NULL) != 0)
+	if (pthread_mutex_init(&gen->protect_p, NULL) != 0
+		|| pthread_mutex_init(&gen->logs, NULL) != 0)
 	{
 		exit(1);
 	}
