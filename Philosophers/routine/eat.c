@@ -6,7 +6,7 @@
 /*   By: msuter <msuter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 22:46:16 by msuter            #+#    #+#             */
-/*   Updated: 2026/06/08 10:36:12 by msuter           ###   ########.fr       */
+/*   Updated: 2026/06/08 12:31:09 by msuter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	counter_reset(t_philo *philo)
 	if (gettimeofday(&t, NULL) != 0)
 	{
 		printf("erreur lors de la recuperation de l'heure\n");
-		pthread_mutex_unlock(&philo->gen->protect_p);
+		cleanup(philo->gen, 0);
 		exit (1);
 	}
 	time = (t.tv_sec * 1000) + (t.tv_usec / 1000);

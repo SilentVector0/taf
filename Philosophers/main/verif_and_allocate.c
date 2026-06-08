@@ -6,17 +6,11 @@
 /*   By: msuter <msuter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 13:51:34 by msuter            #+#    #+#             */
-/*   Updated: 2026/06/08 09:57:30 by msuter           ###   ########.fr       */
+/*   Updated: 2026/06/08 13:19:59 by msuter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
-
-static void	error(char *message)
-{
-	printf("%s", message);
-	exit(1);
-}
 
 static void	allocate_fork(t_gen	*gen)
 {
@@ -25,7 +19,7 @@ static void	allocate_fork(t_gen	*gen)
 	i = 0;
 	gen->fork = malloc(sizeof(pthread_mutex_t) * gen->nb_philo);
 	if (!gen->fork)
-		error("erreur lors de l'allocation de mon tableau fork\n");
+		printf("erreur lors de l'allocation de mon tableau fork\n");
 	while (i < gen->nb_philo)
 	{
 		if (pthread_mutex_init(&gen->fork[i], NULL) != 0)
@@ -51,10 +45,14 @@ static void	allocate_philo(t_gen	*gen)
 
 	i = 0;
 	if (gettimeofday(&t, NULL) != 0)
-		error("erreur lors de la recuperation de l'heure\n");
+	{
+		printf("erreur lors de la recuperation de l'heure\n");
+		cleanup(gen, 0);
+		exit (1);
+	}
 	gen->philo = malloc(sizeof(t_philo) * gen->nb_philo);
 	if (!gen->philo)
-		error("erreur lors de l'allocation de mon tableau philo\n");
+		printf("erreur lors de l'allocation de mon tableau philo\n");
 	while (i < gen->nb_philo)
 	{
 		gen->philo[i].nb_eat = 0;
@@ -65,8 +63,7 @@ static void	allocate_philo(t_gen	*gen)
 			gen->philo[i].right_fork = &gen->fork[0];
 		else
 			gen->philo[i].right_fork = &gen->fork[i + 1];
-		gen->philo[i].gen = gen;
-		i++;
+		gen->philo[i++].gen = gen;
 	}
 }
 

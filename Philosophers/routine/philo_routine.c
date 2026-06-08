@@ -6,7 +6,7 @@
 /*   By: msuter <msuter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 11:19:11 by msuter            #+#    #+#             */
-/*   Updated: 2026/06/08 10:17:56 by msuter           ###   ########.fr       */
+/*   Updated: 2026/06/08 12:51:24 by msuter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	*philo_routine(void *arg)
 
 	philo = arg;
 	if (philo->num % 2 == 0)
-		my_sleep(philo);
+		usleep(philo->gen->ti_to_eat * 1000);
 	while (1)
 	{
 		if (verif_prog(philo) == 1)

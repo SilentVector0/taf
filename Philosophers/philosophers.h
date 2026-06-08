@@ -6,7 +6,7 @@
 /*   By: msuter <msuter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 18:50:34 by msuter            #+#    #+#             */
-/*   Updated: 2026/06/08 09:40:16 by msuter           ###   ########.fr       */
+/*   Updated: 2026/06/08 12:27:53 by msuter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,6 @@ int		verif_prog(t_philo *philo);
 void	*philo_routine(void *arg);
 void	*monitor(void *arg);
 void	*unlock_my_fork(t_philo *philo, int nb, int prot);
-void	get_time(struct timeval *t);
+void	get_time(struct timeval *t, t_gen *gen);
 
 #endif

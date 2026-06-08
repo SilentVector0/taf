@@ -6,7 +6,7 @@
 /*   By: msuter <msuter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 00:01:26 by msuter            #+#    #+#             */
-/*   Updated: 2026/06/08 09:48:53 by msuter           ###   ########.fr       */
+/*   Updated: 2026/06/08 12:27:32 by msuter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	*monitor(void *arg)
 		{
 			if (verif_prog(&gen->philo[i]) == 1)
 				return (NULL);
-			get_time(&t);
+			get_time(&t, gen);
 			time = (t.tv_sec * 1000) + (t.tv_usec / 1000);
 			gestion_p_run(gen, time, i);
 			i++;
