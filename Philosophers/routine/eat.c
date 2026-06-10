@@ -6,7 +6,7 @@
 /*   By: msuter <msuter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 22:46:16 by msuter            #+#    #+#             */
-/*   Updated: 2026/06/08 12:31:09 by msuter           ###   ########.fr       */
+/*   Updated: 2026/06/10 14:45:47 by msuter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,22 +49,39 @@ void	counter_reset(t_philo *philo)
 	pthread_mutex_unlock(&philo->gen->protect_p);
 }
 
-void	*eat(t_philo *philo)
+void	*lock_fork(t_philo *philo)
 {
+	pthread_mutex_t	*first;
+	pthread_mutex_t	*last;
+
 	if (philo->right_fork == philo->left_fork)
 		return (case_solo_philo(philo));
-	pthread_mutex_lock(philo->left_fork);
-	if (verif_prog(philo) == 1)
-		return (unlock_my_fork(philo, 1, 0));
+	if (verif_prog(philo))
+		return (NULL);
+	if (philo->left_fork < philo->right_fork)
+	{
+		first = philo->left_fork;
+		last = philo->right_fork;
+	}
+	else
+	{
+		first = philo->right_fork;
+		last = philo->left_fork;
+	}
+	pthread_mutex_lock(first);
+	if (verif_prog(philo))
+		return (NULL);
 	put_message(philo, "has taken a fork");
-	pthread_mutex_lock(philo->right_fork);
-	if (verif_prog(philo) == 1)
-		return (unlock_my_fork(philo, 2, 0));
+	pthread_mutex_lock(last);
+	if (verif_prog(philo))
+		return (NULL);
 	put_message(philo, "has taken a fork");
-	pthread_mutex_lock(&philo->gen->protect_p);
-	if (philo->gen->p_running == 1)
-		return (unlock_my_fork(philo, 2, 1));
-	pthread_mutex_unlock(&philo->gen->protect_p);
+	return (NULL);
+}
+
+void	*eat(t_philo *philo)
+{
+	lock_fork(philo);
 	put_message(philo, "is eating");
 	counter_reset(philo);
 	usleep(philo->gen->ti_to_eat * 1000);
