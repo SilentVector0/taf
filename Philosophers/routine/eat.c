@@ -6,7 +6,7 @@
 /*   By: msuter <msuter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 22:46:16 by msuter            #+#    #+#             */
-/*   Updated: 2026/06/10 14:45:47 by msuter           ###   ########.fr       */
+/*   Updated: 2026/06/10 14:57:41 by msuter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ void	*lock_fork(t_philo *philo)
 void	*eat(t_philo *philo)
 {
 	lock_fork(philo);
+	if (verif_prog(philo))
+		return (NULL);
 	put_message(philo, "is eating");
 	counter_reset(philo);
 	usleep(philo->gen->ti_to_eat * 1000);
