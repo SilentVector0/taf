@@ -6,7 +6,7 @@
 /*   By: msuter <msuter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 18:50:34 by msuter            #+#    #+#             */
-/*   Updated: 2026/06/08 12:27:53 by msuter           ###   ########.fr       */
+/*   Updated: 2026/06/10 18:18:24 by msuter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct s_gen
 	pthread_t		state;
 	pthread_mutex_t	protect_p;
 	int				must_eat;
+	long			start_time;
 
 }	t_gen;
 
@@ -63,5 +64,6 @@ void	*philo_routine(void *arg);
 void	*monitor(void *arg);
 void	*unlock_my_fork(t_philo *philo, int nb, int prot);
 void	get_time(struct timeval *t, t_gen *gen);
+long	my_gettime(void);
 
 #endif

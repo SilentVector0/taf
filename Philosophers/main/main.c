@@ -6,7 +6,7 @@
 /*   By: msuter <msuter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 18:50:29 by msuter            #+#    #+#             */
-/*   Updated: 2026/06/08 12:31:54 by msuter           ###   ########.fr       */
+/*   Updated: 2026/06/10 18:18:36 by msuter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int	main(int argc, char **argv)
 
 	i = 0;
 	verif_and_attrib_gen(argc, argv, &gen);
+	gen.start_time = my_gettime();
 	creation_thread(&gen, &i);
 	while (i > 0)
 	{
