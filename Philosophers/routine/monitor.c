@@ -6,7 +6,7 @@
 /*   By: msuter <msuter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 00:01:26 by msuter            #+#    #+#             */
-/*   Updated: 2026/06/08 12:27:32 by msuter           ###   ########.fr       */
+/*   Updated: 2026/06/18 13:46:13 by msuter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,6 @@ void	*monitor(void *arg)
 			gestion_p_run(gen, time, i);
 			i++;
 		}
-		usleep(3000);
+		usleep(1000);
 	}
 }

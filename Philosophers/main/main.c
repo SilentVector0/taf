@@ -6,14 +6,29 @@
 /*   By: msuter <msuter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 18:50:29 by msuter            #+#    #+#             */
-/*   Updated: 2026/06/10 18:18:36 by msuter           ###   ########.fr       */
+/*   Updated: 2026/06/18 13:37:09 by msuter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
+long	get_my_t()
+{
+	struct timeval t;
+	long	time;
+
+	if (gettimeofday(&t, NULL) != 0)
+	{
+		printf("erreur lors de la recuperation de l'heure\n");
+		exit (1);
+	}
+	time = (t.tv_sec * 1000) + (t.tv_usec / 1000);
+	return (time);
+}
+
 void	creation_thread(t_gen *gen, int *i)
 {
+	gen->start_time = get_my_t();
 	while (*i < gen->nb_philo)
 	{
 		if (pthread_create(&gen->philo[*i].thread,
@@ -40,7 +55,6 @@ int	main(int argc, char **argv)
 
 	i = 0;
 	verif_and_attrib_gen(argc, argv, &gen);
-	gen.start_time = my_gettime();
 	creation_thread(&gen, &i);
 	while (i > 0)
 	{

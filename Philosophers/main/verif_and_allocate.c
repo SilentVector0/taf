@@ -6,7 +6,7 @@
 /*   By: msuter <msuter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 13:51:34 by msuter            #+#    #+#             */
-/*   Updated: 2026/06/10 18:16:04 by msuter           ###   ########.fr       */
+/*   Updated: 2026/06/18 13:36:58 by msuter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ void	verif_and_attrib_gen(int argc, char **argv, t_gen *gen)
 	gen->ti_to_die = ft_atoi_c(argv[2]);
 	gen->ti_to_eat = ft_atoi_c(argv[3]);
 	gen->ti_to_sleep = ft_atoi_c(argv[4]);
-	gen->start_time = 0;
 	if (argv[5] == NULL)
 		gen->must_eat = -1;
 	else
