@@ -6,16 +6,16 @@
 /*   By: msuter <msuter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 18:50:29 by msuter            #+#    #+#             */
-/*   Updated: 2026/06/18 13:37:09 by msuter           ###   ########.fr       */
+/*   Updated: 2026/06/18 14:22:53 by msuter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-long	get_my_t()
+long	get_my_t(void)
 {
-	struct timeval t;
-	long	time;
+	struct timeval	t;
+	long			time;
 
 	if (gettimeofday(&t, NULL) != 0)
 	{
