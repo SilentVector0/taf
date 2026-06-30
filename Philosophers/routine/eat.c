@@ -51,13 +51,17 @@ void	counter_reset(t_philo *philo)
 
 void	*eat(t_philo *philo)
 {
+	pthread_mutex_t	*first;
+	pthread_mutex_t	*second;
+
 	if (philo->right_fork == philo->left_fork)
 		return (case_solo_philo(philo));
-	pthread_mutex_lock(philo->left_fork);
+	get_fork_order(philo, &first, &second);
+	pthread_mutex_lock(first);
 	if (verif_prog(philo) == 1)
 		return (unlock_my_fork(philo, 1, 0));
 	put_message(philo, "has taken a fork");
-	pthread_mutex_lock(philo->right_fork);
+	pthread_mutex_lock(second);
 	if (verif_prog(philo) == 1)
 		return (unlock_my_fork(philo, 2, 0));
 	put_message(philo, "has taken a fork");
@@ -67,8 +71,8 @@ void	*eat(t_philo *philo)
 	pthread_mutex_unlock(&philo->gen->protect_p);
 	put_message(philo, "is eating");
 	counter_reset(philo);
-	usleep(philo->gen->ti_to_eat * 1000);
-	pthread_mutex_unlock(philo->left_fork);
-	pthread_mutex_unlock(philo->right_fork);
+	precise_sleep(philo, philo->gen->ti_to_eat);
+	pthread_mutex_unlock(second);
+	pthread_mutex_unlock(first);
 	return (NULL);
 }

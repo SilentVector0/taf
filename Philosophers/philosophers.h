@@ -62,7 +62,10 @@ void	*think(t_philo *philo);
 int		verif_prog(t_philo *philo);
 void	*philo_routine(void *arg);
 void	*monitor(void *arg);
+void	get_fork_order(t_philo *philo, pthread_mutex_t **first,
+			pthread_mutex_t **second);
 void	*unlock_my_fork(t_philo *philo, int nb, int prot);
 void	get_time(struct timeval *t, t_gen *gen);
+void	precise_sleep(t_philo *philo, long duration_ms);
 
 #endif

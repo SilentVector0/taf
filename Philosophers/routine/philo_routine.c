@@ -12,20 +12,35 @@
 
 #include "philosophers.h"
 
-void	*unlock_my_fork(t_philo *philo, int nb, int prot)
+void	get_fork_order(t_philo *philo, pthread_mutex_t **first,
+			pthread_mutex_t **second)
 {
-	if (nb == 1)
+	if (philo->left_fork < philo->right_fork)
 	{
-		if (prot == 1)
-			pthread_mutex_unlock(&philo->gen->protect_p);
-		pthread_mutex_unlock(philo->left_fork);
+		*first = philo->left_fork;
+		*second = philo->right_fork;
 	}
 	else
 	{
-		if (prot == 1)
-			pthread_mutex_unlock(&philo->gen->protect_p);
-		pthread_mutex_unlock(philo->left_fork);
-		pthread_mutex_unlock(philo->right_fork);
+		*first = philo->right_fork;
+		*second = philo->left_fork;
+	}
+}
+
+void	*unlock_my_fork(t_philo *philo, int nb, int prot)
+{
+	pthread_mutex_t	*first;
+	pthread_mutex_t	*second;
+
+	get_fork_order(philo, &first, &second);
+	if (prot == 1)
+		pthread_mutex_unlock(&philo->gen->protect_p);
+	if (nb == 1)
+		pthread_mutex_unlock(first);
+	else
+	{
+		pthread_mutex_unlock(second);
+		pthread_mutex_unlock(first);
 	}
 	return (NULL);
 }
@@ -47,8 +62,8 @@ void	*philo_routine(void *arg)
 	t_philo	*philo;
 
 	philo = arg;
-	if (philo->num % 2 == 0)
-		usleep(philo->gen->ti_to_eat * 1000);
+	if (philo->num % 2 == 1)
+		usleep(1000);
 	while (1)
 	{
 		if (verif_prog(philo) == 1)
