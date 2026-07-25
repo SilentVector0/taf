@@ -30,7 +30,7 @@ void	get_time(struct timeval *t, t_gen *gen)
 {
 	if (gettimeofday(t, NULL) != 0)
 	{
-		printf("erreur lors de la recuperation de l'heure\n");
+		printf("error: failed to get the current time\n");
 		cleanup(gen, 0);
 		exit (1);
 	}

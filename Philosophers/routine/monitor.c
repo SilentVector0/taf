@@ -12,6 +12,24 @@
 
 #include "philosophers.h"
 
+static void	put_death(t_philo *philo)
+{
+	struct timeval	t;
+	long			time;
+
+	pthread_mutex_lock(&philo->gen->logs);
+	philo->gen->dead_printed = 1;
+	if (gettimeofday(&t, NULL) != 0)
+	{
+		printf("error: failed to get the current time\n");
+		cleanup(philo->gen, 0);
+		exit (1);
+	}
+	time = ((t.tv_sec * 1000) + (t.tv_usec / 1000)) - philo->gen->start_time;
+	printf("%ld %d %s\n", time, philo->num, "died");
+	pthread_mutex_unlock(&philo->gen->logs);
+}
+
 int	all_eating(t_gen *gen)
 {
 	int	i;
@@ -34,7 +52,7 @@ void	gestion_p_run(t_gen *gen, long time, int i)
 	pthread_mutex_lock(&gen->protect_p);
 	if (time - gen->philo[i].last_meal > gen->ti_to_die)
 	{
-		put_message(&gen->philo[i], "died");
+		put_death(&gen->philo[i]);
 		gen->p_running = 1;
 	}
 	if (all_eating(gen) == 0)
