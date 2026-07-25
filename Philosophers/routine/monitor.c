@@ -29,17 +29,30 @@ int	all_eating(t_gen *gen)
 	return (0);
 }
 
+static void	put_death(t_philo *philo, long time)
+{
+	pthread_mutex_lock(&philo->gen->logs);
+	printf("%ld %d died\n", time - philo->gen->start_time, philo->num);
+	pthread_mutex_unlock(&philo->gen->logs);
+}
+
 void	gestion_p_run(t_gen *gen, long time, int i)
 {
+	int	dead;
+
+	dead = 0;
 	pthread_mutex_lock(&gen->protect_p);
-	if (time - gen->philo[i].last_meal > gen->ti_to_die)
+	if (gen->p_running == 0
+		&& time - gen->philo[i].last_meal > gen->ti_to_die)
 	{
-		put_message(&gen->philo[i], "died");
 		gen->p_running = 1;
+		dead = 1;
 	}
 	if (all_eating(gen) == 0)
 		gen->p_running = 1;
 	pthread_mutex_unlock(&gen->protect_p);
+	if (dead == 1)
+		put_death(&gen->philo[i], time);
 }
 
 void	*monitor(void *arg)
