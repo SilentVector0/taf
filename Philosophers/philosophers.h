@@ -48,6 +48,7 @@ typedef struct s_gen
 	pthread_t		state;
 	pthread_mutex_t	protect_p;
 	int				must_eat;
+	int				dead_printed;
 	long			start_time;
 
 }	t_gen;

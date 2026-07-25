@@ -18,7 +18,7 @@ void	put_message(t_philo *philo, char *message)
 	long			time;
 
 	pthread_mutex_lock(&philo->gen->logs);
-	if (verif_prog(philo) == 1)
+	if (philo->gen->dead_printed == 1)
 	{
 		pthread_mutex_unlock(&philo->gen->logs);
 		return ;

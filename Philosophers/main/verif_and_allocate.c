@@ -75,6 +75,7 @@ void	verif_and_attrib_gen(int argc, char **argv, t_gen *gen)
 		exit(1);
 	}
 	gen->p_running = 0;
+	gen->dead_printed = 0;
 	gen->nb_philo = ft_atoi_c(argv[1]);
 	gen->ti_to_die = ft_atoi_c(argv[2]);
 	gen->ti_to_eat = ft_atoi_c(argv[3]);

@@ -32,6 +32,7 @@ int	all_eating(t_gen *gen)
 static void	put_death(t_philo *philo, long time)
 {
 	pthread_mutex_lock(&philo->gen->logs);
+	philo->gen->dead_printed = 1;
 	printf("%ld %d died\n", time - philo->gen->start_time, philo->num);
 	pthread_mutex_unlock(&philo->gen->logs);
 }
