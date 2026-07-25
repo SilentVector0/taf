@@ -18,14 +18,9 @@ void	put_message(t_philo *philo, char *message)
 	long			time;
 
 	pthread_mutex_lock(&philo->gen->logs);
-	if (philo->gen->dead_printed == 1)
-	{
-		pthread_mutex_unlock(&philo->gen->logs);
-		return ;
-	}
 	if (gettimeofday(&t, NULL) != 0)
 	{
-		printf("error: failed to get the current time\n");
+		printf("erreur lors de la recuperation de l'heure\n");
 		cleanup(philo->gen, 0);
 		exit (1);
 	}
@@ -49,6 +44,8 @@ void	cleanup(t_gen *gen, int i)
 		pthread_mutex_destroy(&gen->fork[i]);
 		i++;
 	}
+	free(gen->fork);
+	free(gen->philo);
 	pthread_mutex_destroy(&gen->protect_p);
 	pthread_mutex_destroy(&gen->logs);
 }
@@ -59,13 +56,13 @@ static void	verif(const char *str, int *i)
 	{
 		if (str[*i] == '-' || str[*i] == '0')
 		{
-			printf("please enter a positive number\n");
+			printf("veuillez entrer un nombre positif\n");
 			exit (1);
 		}
 		(*i)++;
 		if (str[*i] == '\0')
 		{
-			printf ("please enter a valid number\n");
+			printf ("veuillez entrer un nombre valide\n");
 			exit (1);
 		}
 	}
@@ -86,11 +83,11 @@ long	ft_atoi_c(const char *str)
 	}
 	if (str[i] != '\0')
 	{
-		printf("error in an argument, please try again\n");
+		printf("erreur dans un argument, veuillez recommencer\n");
 		exit(1);
 	}
 	if (total < 2147483647)
 		return (total);
-	printf ("please enter a smaller number, the limit is 2147483647\n");
+	printf ("veuillez entrer un nombre inferieur, la limite est 2147483647\n");
 	exit (1);
 }

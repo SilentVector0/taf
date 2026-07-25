@@ -39,7 +39,7 @@ void	counter_reset(t_philo *philo)
 	pthread_mutex_lock(&philo->gen->protect_p);
 	if (gettimeofday(&t, NULL) != 0)
 	{
-		printf("error: failed to get the current time\n");
+		printf("erreur lors de la recuperation de l'heure\n");
 		cleanup(philo->gen, 0);
 		exit (1);
 	}

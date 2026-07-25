@@ -62,7 +62,7 @@ void	*philo_routine(void *arg)
 	t_philo	*philo;
 
 	philo = arg;
-	if (philo->num % 2 == 0)
+	if (philo->num % 2 == 1)
 		usleep(1000);
 	while (1)
 	{

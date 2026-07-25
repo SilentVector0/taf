@@ -19,7 +19,7 @@ long	get_my_t(void)
 
 	if (gettimeofday(&t, NULL) != 0)
 	{
-		printf("error: failed to get the current time\n");
+		printf("erreur lors de la recuperation de l'heure\n");
 		exit (1);
 	}
 	time = (t.tv_sec * 1000) + (t.tv_usec / 1000);

@@ -20,8 +20,6 @@
 # include <stdlib.h>
 # include <sys/time.h>
 
-# define MAX_PHILO 200
-
 typedef struct s_gen	t_gen;
 typedef struct s_philo
 {
@@ -41,14 +39,13 @@ typedef struct s_gen
 	long			ti_to_sleep;
 	long			ti_to_eat;
 	int				nb_philo;
-	pthread_mutex_t	fork[MAX_PHILO];
+	pthread_mutex_t	*fork;
 	pthread_mutex_t	logs;
 	int				p_running;
-	t_philo			philo[MAX_PHILO];
+	t_philo			*philo;
 	pthread_t		state;
 	pthread_mutex_t	protect_p;
 	int				must_eat;
-	int				dead_printed;
 	long			start_time;
 
 }	t_gen;
