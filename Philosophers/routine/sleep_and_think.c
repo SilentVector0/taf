@@ -6,7 +6,7 @@
 /*   By: msuter <msuter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 23:21:30 by msuter            #+#    #+#             */
-/*   Updated: 2026/06/08 12:33:42 by msuter           ###   ########.fr       */
+/*   Updated: 2026/07/25 17:03:48 by msuter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,10 @@ void	precise_sleep(t_philo *philo, long duration_ms)
 			break ;
 		}
 		pthread_mutex_unlock(&philo->gen->protect_p);
-		usleep(500);
+		if (end_time - current_time > 5)
+			usleep(5000);
+		else
+			usleep(500);
 	}
 }
 
