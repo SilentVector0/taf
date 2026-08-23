@@ -1,28 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.cpp                                      :+:      :+:    :+:   */
+/*   megaphone.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msuter <msuter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/02 16:44:56 by msuter            #+#    #+#             */
-/*   Updated: 2026/07/02 16:49:32 by msuter           ###   ########.fr       */
+/*   Created: 2026/08/21 10:50:27 by msuter            #+#    #+#             */
+/*   Updated: 2026/08/23 11:08:44 by msuter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "phonebook.hpp"
+#include <iostream>
+#include <cctype>
 
-void PhoneBook::AddContact(Contact c)
+int main (int argc, char **argv)
 {
-	if (index == 8)
-		index = 0;
-
-}
-void PhoneBook::SearchContact()
-{
-
-}
-void PhoneBook::ExitContact()
-{
-
+	int i = 1;
+	int j = 0;
+	if (argc == 1)
+	{
+		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *\n";
+		return (0);
+	}
+	while (argv[i])
+	{
+		j = 0;
+		while (argv[i][j])
+		{
+			std::cout << (char)std::toupper(argv[i][j]);
+			j++;
+		}
+		i++;
+	}
+	std::cout << '\n';
+	return(0);
 }
