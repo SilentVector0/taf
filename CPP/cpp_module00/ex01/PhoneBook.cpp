@@ -6,7 +6,7 @@
 /*   By: msuter <msuter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/23 15:57:35 by msuter            #+#    #+#             */
-/*   Updated: 2026/08/24 23:43:19 by msuter           ###   ########.fr       */
+/*   Updated: 2026/08/25 14:02:22 by msuter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 PhoneBook::PhoneBook()
 {
 	pos = -1;
+	n = 0;
 }
 
 static std::string Loop(std::string input)
@@ -51,6 +52,8 @@ void PhoneBook::Add()
 	Value = Loop("Darkest secret\n");
 	C[pos].SetDarkestSecret(Value);
 	pos++;
+	if (n < 8)
+		n++;
 	return;
 }
 
@@ -65,17 +68,18 @@ static std::string Truncat(std::string Value)
 	return (Value);
 }
 
-static int VerifNumber(int pos)
+static int VerifNumber(int num)
 {
 	int index;
 	do
 	{
-		std::cout << "choose a contact from 0 to " << pos << '\n';
+		std::cout << "choose a contact from 0 to " << num << '\n';
 		std::cin >> index;
-		if (index < 0 || index > pos)
-			std::cout << "wrong index.\n";
+		if (index < 0 || index > num)
+			std::cout << "invalid index.\n";
 	}
-	while (index < 0 || index > pos);
+	while (index < 0 || index > num);
+	return (index);
 }
 
 void	PhoneBook::Search()
@@ -87,7 +91,7 @@ void	PhoneBook::Search()
 		return;
 	}
 	std::cout << std::right;
-	while (i < pos)
+	while (i < n)
 	{
 		std::cout << '|' << std::setw(10) << i << '|';
 		std::cout << std::setw(10) << Truncat(C[i].GetName()) << '|';
@@ -95,6 +99,10 @@ void	PhoneBook::Search()
 		std::cout << std::setw(10) << Truncat(C[i].GetNickName()) << '|' << '\n';
 		i++;
 	}
-	i = VerifNumber(pos);
-	
+	i = VerifNumber(n - 1);
+	std::cout << C[i].GetName() << '|';
+	std::cout << C[i].GetLastName() << '|';
+	std::cout << C[i].GetNickName() << '|';
+	std::cout << C[i].GetPhoneNumber() << '|';
+	std::cout << C[i].GetDarkestSecret() << '|' << '\n';
 }

@@ -6,9 +6,12 @@
 /*   By: msuter <msuter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/23 15:57:37 by msuter            #+#    #+#             */
-/*   Updated: 2026/08/24 23:12:23 by msuter           ###   ########.fr       */
+/*   Updated: 2026/08/25 14:05:02 by msuter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef PHONEBOOK_HPP
+#define PHONEBOOK_HPP
 
 #include "Contact.hpp"
 #include <cstdlib>
@@ -19,6 +22,7 @@ class PhoneBook
 	private:
 		Contact	C[8];
 		int		pos;
+		int		n;
 
 	public:
 		PhoneBook();
@@ -26,3 +30,5 @@ class PhoneBook
 		void	Search();
 		void	Exit();
 };
+
+#endif

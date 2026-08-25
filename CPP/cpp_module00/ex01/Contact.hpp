@@ -6,9 +6,12 @@
 /*   By: msuter <msuter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/23 15:57:31 by msuter            #+#    #+#             */
-/*   Updated: 2026/08/23 15:57:32 by msuter           ###   ########.fr       */
+/*   Updated: 2026/08/25 14:04:29 by msuter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef CONTACT_HP
+#define CONTACT_HPP
 
 #include <iostream>
 #include <string>
@@ -34,3 +37,5 @@ public:
 	std::string		GetPhoneNumber()	const;
 	std::string		GetDarkestSecret()	const;
 };
+
+#endif
