@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Main.cpp                                           :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msuter <msuter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/26 00:08:37 by msuter            #+#    #+#             */
-/*   Updated: 2026/08/26 00:08:39 by msuter           ###   ########.fr       */
+/*   Created: 2026/08/26 00:08:00 by msuter            #+#    #+#             */
+/*   Updated: 2026/08/26 00:20:38 by msuter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.hpp"
+#ifndef ZOMBIE_HPP
+#define ZOMBIE_HPP
 
-int main ()
+#include <iostream>
+#include <string>
+
+class Zombie
 {
-	PhoneBook p;
-	std::string input;
+	private:
+		std::string Name;
 
-	std::cout << "Welcome to your phonebook. Available commands: ADD, SEARCH, EXIT.\n";
-	while (1)
-	{
-		std::cout << '>';
-		std::getline(std::cin, input);
-		if (input == "ADD")
-			p.Add();
-		else if (input == "SEARCH")
-			p.Search();
-		else if (input == "EXIT")
-			p.Exit();
-	}
-}
+	public:
+		void		announce();
+		std::string	GetName();
+		void		SetName(std::string Value);
+};
+
+#endif
