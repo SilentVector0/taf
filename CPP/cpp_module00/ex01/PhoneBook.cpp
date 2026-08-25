@@ -6,7 +6,7 @@
 /*   By: msuter <msuter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/23 15:57:35 by msuter            #+#    #+#             */
-/*   Updated: 2026/08/25 14:02:22 by msuter           ###   ########.fr       */
+/*   Updated: 2026/08/25 15:52:14 by msuter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,13 @@ PhoneBook::PhoneBook()
 	n = 0;
 }
 
+//!ADD ───────────────────────────────────────────────────────────────
+
 static std::string Loop(std::string input)
 {
 	std::string Value;
+	int			i = 0;
+	bool			Valid = true;
 
 	std::cout << input;
 	do
@@ -28,8 +32,23 @@ static std::string Loop(std::string input)
 		std::getline(std::cin, Value);
 		if (Value.empty())
 			std::cout << "Error, a saved contact can’t have empty fields\n" << input;
+		else if (input == "Phone number\n")
+		{
+			Valid = true;
+			i = 0;
+			while (Value[i])
+			{
+				if (isdigit(Value[i]) == 0)
+				{
+					std::cout << "Error, wrong number\n";
+					Valid = false;
+					break;
+				}
+				i++;
+			}
+		}
 	}
-	while(Value.empty());
+	while(Value.empty() || Valid == false);
 	return (Value);
 }
 
@@ -57,6 +76,7 @@ void PhoneBook::Add()
 	return;
 }
 
+//!SEARCH ───────────────────────────────────────────────────────────────
 
 static std::string Truncat(std::string Value)
 {
@@ -105,4 +125,11 @@ void	PhoneBook::Search()
 	std::cout << C[i].GetNickName() << '|';
 	std::cout << C[i].GetPhoneNumber() << '|';
 	std::cout << C[i].GetDarkestSecret() << '|' << '\n';
+}
+
+//!EXIT ───────────────────────────────────────────────────────────────
+
+void	PhoneBook::Exit()
+{
+	exit(0);
 }

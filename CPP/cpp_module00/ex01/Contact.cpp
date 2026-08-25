@@ -6,11 +6,13 @@
 /*   By: msuter <msuter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/23 15:57:26 by msuter            #+#    #+#             */
-/*   Updated: 2026/08/23 16:24:06 by msuter           ###   ########.fr       */
+/*   Updated: 2026/08/25 15:47:36 by msuter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
+
+//!Set ───────────────────────────────────────────────────────────────
 
 void			Contact::SetName(std::string Value)
 {
@@ -32,6 +34,8 @@ void			Contact::SetDarkestSecret(std::string Value)
 {
 	DarkestSecret = Value;
 }
+
+//!Get ───────────────────────────────────────────────────────────────
 
 std::string		Contact::GetName() const
 {
