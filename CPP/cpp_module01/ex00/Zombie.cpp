@@ -6,7 +6,7 @@
 /*   By: msuter <msuter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/26 00:20:47 by msuter            #+#    #+#             */
-/*   Updated: 2026/08/26 00:26:58 by msuter           ###   ########.fr       */
+/*   Updated: 2026/08/27 11:55:58 by msuter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,12 @@ std::string	Zombie::GetName()
 	return (Name);
 }
 
-void	Zombie::announce()
+void	Zombie::Announce()
 {
 	std::cout << GetName() << ": BraiiiiiiinnnzzzZ...\n";
+}
+
+Zombie::~Zombie()
+{
+	std::cout << GetName() << " has been destroyed !\n";
 }

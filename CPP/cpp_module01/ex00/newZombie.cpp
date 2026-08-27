@@ -8,11 +8,3 @@ Zombie* newZombie( std::string name )
 	Z1->SetName(name);
 	return (Z1);
 }
-
-void randomChump( std::string name )
-{
-	Zombie Z1;
-
-	Z1.SetName(name);
-	Z1.announce();
-}

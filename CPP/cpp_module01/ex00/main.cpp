@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msuter <msuter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/26 00:08:00 by msuter            #+#    #+#             */
-/*   Updated: 2026/08/27 12:27:15 by msuter           ###   ########.fr       */
+/*   Created: 2026/08/27 12:00:05 by msuter            #+#    #+#             */
+/*   Updated: 2026/08/27 12:27:50 by msuter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
-#define ZOMBIE_HPP
+#include "Zombie.hpp"
 
-#include <iostream>
-#include <string>
-
-class Zombie
+int	main()
 {
-	private:
-		std::string Name;
 
-	public:
-					~Zombie();
-		void		Announce();
-		std::string	GetName();
-		void		SetName(std::string Value);
-};
 
-Zombie* newZombie( std::string name );
-void randomChump(std::string name);
+	std::cout << "Creation zombie1 with randomChump (stack)\n";
 
-#endif
+
+	std::cout << "creation zombie 2 with newZombie (heap)\n";
+
+	std::cout << "zombie 2 has been created, we can now call the announce.\n";
+
+	std::cout << "deleting my zombie 2\n";
+}
