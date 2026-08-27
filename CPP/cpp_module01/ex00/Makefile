@@ -2,7 +2,7 @@
 CXX = c++
 NAME = BraiiiiiiinnnzzzZ
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98
-SRCS = 
+SRCS = main.cpp newZombie.cpp randomChump.cpp Zombie.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 %.o: %.cpp

@@ -6,7 +6,7 @@
 /*   By: msuter <msuter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/27 12:00:05 by msuter            #+#    #+#             */
-/*   Updated: 2026/08/27 12:27:50 by msuter           ###   ########.fr       */
+/*   Updated: 2026/08/27 13:33:51 by msuter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,13 @@
 
 int	main()
 {
+	std::cout << "Creation toto with randomChump (stack)\n";
+	randomChump("toto");
 
-
-	std::cout << "Creation zombie1 with randomChump (stack)\n";
-
-
-	std::cout << "creation zombie 2 with newZombie (heap)\n";
-
-	std::cout << "zombie 2 has been created, we can now call the announce.\n";
-
+	std::cout << "creation foo with newZombie (heap)\n";
+	Zombie* Z2 = newZombie("foo");
+	std::cout << "zombie foo has been created, we can now call the announce.\n";
+	Z2->Announce();
 	std::cout << "deleting my zombie 2\n";
+	delete Z2;
 }
