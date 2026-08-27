@@ -11,5 +11,8 @@ Zombie* newZombie( std::string name )
 
 void randomChump( std::string name )
 {
+	Zombie Z1;
 
+	Z1.SetName(name);
+	Z1.announce();
 }
