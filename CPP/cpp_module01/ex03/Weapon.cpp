@@ -6,18 +6,20 @@
 /*   By: msuter <msuter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/28 16:56:45 by msuter            #+#    #+#             */
-/*   Updated: 2026/08/28 17:10:08 by msuter           ###   ########.fr       */
+/*   Updated: 2026/09/25 16:45:52 by msuter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Weapon.hpp"
 
-void	Weapon::SetType(std::string Value)
-{
+Weapon::Weapon(std::string data) : _type(data){}
 
+void	Weapon::setType(std::string Value)
+{
+	_type = Value;
 }
 
-const std::string &Weapon::GetType()
+const std::string &Weapon::getType() const
 {
-
+	return (_type);
 }
