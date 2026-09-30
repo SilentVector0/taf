@@ -6,19 +6,25 @@
 /*   By: msuter <msuter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/28 16:56:35 by msuter            #+#    #+#             */
-/*   Updated: 2026/08/28 17:05:29 by msuter           ###   ########.fr       */
+/*   Updated: 2026/09/30 14:56:46 by msuter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <string>
+#ifndef WEAPON_HPP
+#define WEAPON_HPP
+
+# include <iostream>
+# include <string>
 
 class Weapon
 {
-	private:
-		std::string type;
-
 	public:
-		void				SetType(std::string Value);
+							Weapon(std::string type);
+		void				setType(std::string Value);
 		const std::string	&GetType();
+
+	private:
+		std::string _type;
 };
+
+#endif
