@@ -19,7 +19,7 @@ int main (int argc, char **argv)
 		std::cout << "error, your programm must have 3 param, filename, string1 and string2\n";
 		return (1);
 	}
-	if (!argv[2])
+	if (!argv[2] || argv[2][0] == '\0')
 	{
 		std::cout << "error, your string 1 is empty\n";
 		return (1);
