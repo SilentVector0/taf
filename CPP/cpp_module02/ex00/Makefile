@@ -1,8 +1,7 @@
-
 CXX = c++
-NAME = Hi_this_is_brain
+NAME = Fixed
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98
-SRCS = main.cpp
+SRCS = Fixed.cpp main.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 %.o: %.cpp

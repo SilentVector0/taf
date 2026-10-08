@@ -1,6 +1,6 @@
 
 CXX = c++
-NAME = Brain
+NAME = unnecessary_violence
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 SRCS = main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
 OBJS = $(SRCS:.cpp=.o)

@@ -1,6 +1,6 @@
 
 CXX = c++
-NAME = BraiiiiiiinnnzzzZ
+NAME = Moar_brainz
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 SRCS = main.cpp Zombie.cpp zombieHorde.cpp
 OBJS = $(SRCS:.cpp=.o)
