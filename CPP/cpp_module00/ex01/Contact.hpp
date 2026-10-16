@@ -6,11 +6,11 @@
 /*   By: msuter <msuter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/23 15:57:31 by msuter            #+#    #+#             */
-/*   Updated: 2026/08/25 14:04:29 by msuter           ###   ########.fr       */
+/*   Updated: 2026/10/14 14:05:57 by msuter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTACT_HP
+#ifndef CONTACT_HPP
 #define CONTACT_HPP
 
 #include <iostream>

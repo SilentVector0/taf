@@ -45,7 +45,6 @@ make re       # recompile from scratch
 ./philo 1 800 200 200      # philosopher 0 must die
 ./philo 5 800 200 200      # no philosopher should die
 ./philo 5 800 200 200 7    # no philosopher dies, simulation stops after 7 meals each
-./philo 4 410 200 200      # no philosopher should die
 ./philo 4 310 200 100      # one philosopher must die
 ./philo 2 800 200 200      # no philosopher dies, death detected in under 10ms
 
