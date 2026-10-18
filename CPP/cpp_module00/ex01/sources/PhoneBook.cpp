@@ -6,11 +6,12 @@
 /*   By: msuter <msuter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/23 15:57:35 by msuter            #+#    #+#             */
-/*   Updated: 2026/08/25 15:52:14 by msuter           ###   ########.fr       */
+/*   Updated: 2026/10/18 17:00:02 by msuter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.hpp"
+#include "../includes/PhoneBook.hpp"
+#include "../includes/verif.hpp"
 
 PhoneBook::PhoneBook()
 {
@@ -30,6 +31,8 @@ static std::string Loop(std::string input)
 	do
 	{
 		std::getline(std::cin, Value);
+		if (verif_state() == 1)
+			continue;
 		if (Value.empty())
 			std::cout << "Error, a saved contact can’t have empty fields\n" << input;
 		else if (input == "Phone number\n")
@@ -90,15 +93,25 @@ static std::string Truncat(std::string Value)
 
 static int VerifNumber(int num)
 {
-	int index;
+	long long 	index;
+	int			state;
 	do
 	{
+		state = 0;
 		std::cout << "choose a contact from 0 to " << num << '\n';
 		std::cin >> index;
-		if (index < 0 || index > num)
+		if (verif_state() == 1)
+		{
+			state = 1;
+			continue;
+		}
+		if (verif_possible() == 1 || index < 0 || index > num)
+		{
 			std::cout << "invalid index.\n";
+			state = 1;
+		}
 	}
-	while (index < 0 || index > num);
+	while (state == 1);
 	return (index);
 }
 
@@ -120,11 +133,11 @@ void	PhoneBook::Search()
 		i++;
 	}
 	i = VerifNumber(n - 1);
-	std::cout << C[i].GetName() << '|';
-	std::cout << C[i].GetLastName() << '|';
-	std::cout << C[i].GetNickName() << '|';
-	std::cout << C[i].GetPhoneNumber() << '|';
-	std::cout << C[i].GetDarkestSecret() << '|' << '\n';
+	std::cout << "Name : " << C[i].GetName() << '\n';
+	std::cout << "Last Name : " << C[i].GetLastName() << '\n';
+	std::cout << "Nickname : " << C[i].GetNickName() << '\n';
+	std::cout << "Phone Number : " << C[i].GetPhoneNumber() << '\n';
+	std::cout << "Darkest Secret : " << C[i].GetDarkestSecret() << '\n';
 }
 
 //!EXIT ───────────────────────────────────────────────────────────────

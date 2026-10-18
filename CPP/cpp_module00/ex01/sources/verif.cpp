@@ -1,35 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   verif.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msuter <msuter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/23 15:57:37 by msuter            #+#    #+#             */
-/*   Updated: 2026/08/25 15:09:27 by msuter           ###   ########.fr       */
+/*   Created: 2026/10/18 16:09:05 by msuter            #+#    #+#             */
+/*   Updated: 2026/10/18 16:45:32 by msuter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-#define PHONEBOOK_HPP
+#include "../includes/verif.hpp"
 
-#include "Contact.hpp"
-#include <cstdlib>
-#include <iomanip>
-#include <cctype>
-
-class PhoneBook
+int	verif_possible()
 {
-	private:
-		Contact	C[8];
-		int		pos;
-		int		n;
+	if (std::cin.fail() == true)
+	{
+		std::cin.clear();
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
+		return (1);
+	}
+	return (0);
+}
 
-	public:
-		PhoneBook();
-		void	Add();
-		void	Search();
-		void	Exit();
-};
-
-#endif
+int	verif_state()
+{
+	if (std::cin.eof() == true)
+	{
+		std::cout << '\n';
+		std::clearerr(stdin);
+		std::cin.clear();
+		return (1);
+	}
+	return (0);
+}
