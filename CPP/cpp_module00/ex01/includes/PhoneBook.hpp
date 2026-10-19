@@ -6,7 +6,7 @@
 /*   By: msuter <msuter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/23 15:57:37 by msuter            #+#    #+#             */
-/*   Updated: 2026/10/18 16:17:38 by msuter           ###   ########.fr       */
+/*   Updated: 2026/10/19 10:24:08 by msuter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <cstdlib>
 #include <iomanip>
 #include <cctype>
+#include <sstream>
 
 class PhoneBook
 {

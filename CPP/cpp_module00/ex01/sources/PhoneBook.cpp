@@ -6,7 +6,7 @@
 /*   By: msuter <msuter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/23 15:57:35 by msuter            #+#    #+#             */
-/*   Updated: 2026/10/18 17:00:02 by msuter           ###   ########.fr       */
+/*   Updated: 2026/10/19 10:35:37 by msuter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,28 +91,55 @@ static std::string Truncat(std::string Value)
 	return (Value);
 }
 
+static int	real_num(std::string index)
+{
+	size_t	i = 0;
+
+	if (index == "")
+		return (1);
+	while (i < index.size())
+	{
+		if (isdigit(index[i]) == 0)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 static int VerifNumber(int num)
 {
-	long long 	index;
-	int			state;
+	std::string 	index;
+	int				state;
+	int				res;
+
+
 	do
 	{
 		state = 0;
 		std::cout << "choose a contact from 0 to " << num << '\n';
-		std::cin >> index;
+		std::getline(std::cin, index);
 		if (verif_state() == 1)
 		{
 			state = 1;
 			continue;
 		}
-		if (verif_possible() == 1 || index < 0 || index > num)
+		if (real_num(index) == 1)
 		{
 			std::cout << "invalid index.\n";
 			state = 1;
+			continue;
+		}
+		std::istringstream var(index);
+		var >> res;
+		if (var.fail() || res > num)
+		{
+			std::cout << "invalid index.\n";
+			state = 1;
+			continue;
 		}
 	}
 	while (state == 1);
-	return (index);
+	return (res);
 }
 
 void	PhoneBook::Search()
