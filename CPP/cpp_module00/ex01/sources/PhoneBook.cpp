@@ -6,7 +6,7 @@
 /*   By: msuter <msuter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/23 15:57:35 by msuter            #+#    #+#             */
-/*   Updated: 2026/10/19 10:35:37 by msuter           ###   ########.fr       */
+/*   Updated: 2026/10/21 10:26:55 by msuter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,11 @@ static std::string Loop(std::string input)
 	do
 	{
 		std::getline(std::cin, Value);
-		if (verif_state() == 1)
-			continue;
+		if (std::cin.eof() == true)
+		{
+			std::cout << "You pressed ctrl + d, end of program\n";
+			exit(1);
+		}
 		if (Value.empty())
 			std::cout << "Error, a saved contact can’t have empty fields\n" << input;
 		else if (input == "Phone number\n")
@@ -118,10 +121,10 @@ static int VerifNumber(int num)
 		state = 0;
 		std::cout << "choose a contact from 0 to " << num << '\n';
 		std::getline(std::cin, index);
-		if (verif_state() == 1)
+		if (std::cin.eof() == true)
 		{
-			state = 1;
-			continue;
+			std::cout << "You pressed ctrl + d, end of program\n";
+			exit(1);
 		}
 		if (real_num(index) == 1)
 		{

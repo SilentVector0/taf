@@ -6,7 +6,7 @@
 /*   By: msuter <msuter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/26 00:08:37 by msuter            #+#    #+#             */
-/*   Updated: 2026/10/18 16:18:27 by msuter           ###   ########.fr       */
+/*   Updated: 2026/10/21 10:26:30 by msuter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,11 @@ int main ()
 	{
 		std::cout << '>';
 		std::getline(std::cin, input);
-		if (verif_state() == 1)
-			continue;
+		if (std::cin.eof() == true)
+		{
+			std::cout << "You pressed ctrl + d, end of program\n";
+			exit(1);
+		}
 		if (input == "ADD")
 			p.Add();
 		else if (input == "SEARCH")

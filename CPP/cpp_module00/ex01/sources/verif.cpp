@@ -6,7 +6,7 @@
 /*   By: msuter <msuter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/18 16:09:05 by msuter            #+#    #+#             */
-/*   Updated: 2026/10/19 10:30:41 by msuter           ###   ########.fr       */
+/*   Updated: 2026/10/21 10:25:12 by msuter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,6 @@ int	verif_possible()
 	{
 		std::cin.clear();
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
-		return (1);
-	}
-	return (0);
-}
-
-int	verif_state()
-{
-	if (std::cin.eof() == true)
-	{
-		std::cout << '\n';
-		std::clearerr(stdin);
-		std::cin.clear();
 		return (1);
 	}
 	return (0);
