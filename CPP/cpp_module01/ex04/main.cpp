@@ -29,6 +29,9 @@ int main (int argc, char **argv)
 	std::ifstream source(argv[1]);
 	if (!source)
 		return (std::cerr << "error during the source open\n", 1);
+	source.peek(); //verif folder (1 bit est lu mais pas conso)
+	if (source.fail())
+		return (std::cerr << "error, a folder is not accepted as a file\n", 1);
 	outfile = argv[1];
 	outfile += ".replace";
 	std::ofstream dest(outfile.c_str());

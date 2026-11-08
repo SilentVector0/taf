@@ -6,7 +6,7 @@
 /*   By: msuter <msuter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/26 00:08:00 by msuter            #+#    #+#             */
-/*   Updated: 2026/08/27 12:27:15 by msuter           ###   ########.fr       */
+/*   Updated: 2026/11/08 13:00:47 by msuter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class Zombie
 
 	public:
 					~Zombie();
-		void		Announce();
+		void		announce();
 		std::string	GetName();
 		void		SetName(std::string Value);
 };

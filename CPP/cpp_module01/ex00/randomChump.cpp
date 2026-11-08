@@ -6,7 +6,7 @@
 /*   By: msuter <msuter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/27 12:01:36 by msuter            #+#    #+#             */
-/*   Updated: 2026/08/27 12:05:16 by msuter           ###   ########.fr       */
+/*   Updated: 2026/11/08 13:01:08 by msuter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,5 @@ void randomChump(std::string name)
 	Zombie Z1;
 
 	Z1.SetName(name);
-	Z1.Announce();
+	Z1.announce();
 }

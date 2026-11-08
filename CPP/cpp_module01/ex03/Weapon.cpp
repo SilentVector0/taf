@@ -6,7 +6,7 @@
 /*   By: msuter <msuter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/28 16:56:45 by msuter            #+#    #+#             */
-/*   Updated: 2026/09/30 14:57:49 by msuter           ###   ########.fr       */
+/*   Updated: 2026/11/08 12:45:24 by msuter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	Weapon::setType(std::string Value)
 	_type = Value;
 }
 
-const std::string &Weapon::GetType()
+const std::string &Weapon::getType()
 {
 	return (_type);
 }
