@@ -1,5 +1,7 @@
 #include "Fixed.hpp"
 
+//!constru ───────────────────────────────────────────────────────────────
+
 Fixed::Fixed()
 {
 	std::cout << "constructor call\n";
@@ -27,6 +29,8 @@ Fixed::Fixed(const float _var)
 	_fix = int(roundf(_var * num));
 }
 
+//!operator_and_destruc ───────────────────────────────────────────────────────────────
+
 Fixed	&Fixed::operator=(const Fixed &f)
 {
 	std::cout << "operator call\n";
@@ -42,18 +46,31 @@ Fixed::~Fixed()
 	std::cout << "destructor call\n";
 }
 
+//!get_set ───────────────────────────────────────────────────────────────
+
 int		Fixed::getRawBits(void) const
 {
 	std::cout << "getRawBits member function called\n";
 	return (_fix);
 }
+
 void	Fixed::setRawBits(int const raw)
 {
 	std::cout << "setRawBits member function called\n";
 	_fix = raw;
 }
 
-float	Fixed::toFloat( void ) const
-{
+//!other ───────────────────────────────────────────────────────────────
 
+float	Fixed::toFloat(void) const
+{
+	float	num;
+
+	num = 1 << fractional;
+	return (_fix / num);
+}
+
+int Fixed::toInt(void) const
+{
+	return (_fix >> fractional);
 }
