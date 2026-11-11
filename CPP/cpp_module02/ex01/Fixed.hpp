@@ -24,6 +24,6 @@ class Fixed
 		static const int	fractional = 8;
 };
 
-std::ostream	&operator<<(std::ostream&, const Fixed &f);
+std::ostream	&operator<<(std::ostream& flux, const Fixed &f);
 
 #endif

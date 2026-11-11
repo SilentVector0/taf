@@ -72,5 +72,11 @@ float	Fixed::toFloat(void) const
 
 int Fixed::toInt(void) const
 {
-	return (_fix >> fractional);
+	return (_fix / (1 << fractional));
+}
+
+std::ostream	&operator<<(std::ostream& flux, const Fixed &f)
+{
+	flux << f.toFloat();
+	return (flux);
 }
