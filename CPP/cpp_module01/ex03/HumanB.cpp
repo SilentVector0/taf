@@ -14,5 +14,5 @@ void HumanB::attack()
 		std::cout << "error, empty weapon\n";
 		return;
 	}
-	std::cout << _nameB << " attacks with their " << _wB->GetType() << '\n';
+	std::cout << _nameB << " attacks with their " << _wB->getType() << '\n';
 }

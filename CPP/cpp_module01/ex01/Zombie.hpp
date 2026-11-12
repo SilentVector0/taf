@@ -6,7 +6,7 @@
 /*   By: msuter <msuter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/26 00:08:00 by msuter            #+#    #+#             */
-/*   Updated: 2026/11/08 13:02:36 by msuter           ###   ########.fr       */
+/*   Updated: 2026/11/12 13:48:11 by msuter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ class Zombie
 };
 
 Zombie* newZombie( std::string name );
-void randomChump(std::string name);
 Zombie *zombieHorde(long N, std::string name );
 
 #endif
