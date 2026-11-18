@@ -10,7 +10,7 @@ class Fixed
 	public:
 						Fixed();
 						Fixed(const Fixed &f);
-						Fixed	&operator=(const Fixed &f);
+		Fixed			&operator=(const Fixed &f);
 						~Fixed();
 		int				getRawBits(void) const;
 		void			setRawBits(int const raw);
@@ -24,6 +24,11 @@ class Fixed
 		bool			operator<=(const Fixed &f) const;
 		bool			operator==(const Fixed &f) const;
 		bool			operator!=(const Fixed &f) const;
+		Fixed			operator+(const Fixed &f) const;
+		Fixed			operator-(const Fixed &f) const;
+		Fixed			operator*(const Fixed &f) const;
+		Fixed			operator/(const Fixed &f) const;
+		Fixed			operator++(const int);
 
 	private:
 		int					_fix;

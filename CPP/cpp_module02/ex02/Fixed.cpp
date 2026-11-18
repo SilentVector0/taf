@@ -71,7 +71,55 @@ bool	Fixed::operator!=(const Fixed &f) const
 	return (this->_fix != f._fix);
 }
 
+Fixed	Fixed::operator+(const Fixed &f) const
+{
+	Fixed	res;
 
+	res.setRawBits(this->_fix + f._fix);
+	return(res);
+}
+
+Fixed	Fixed::operator-(const Fixed &f) const
+{
+	Fixed	res;
+
+	res.setRawBits(this->_fix - f._fix);
+	return (res);
+}
+
+Fixed	Fixed::operator*(const Fixed &f) const
+{
+	Fixed	res;
+	int		num;
+
+	num = 1 << fractional;
+	res.setRawBits((this->_fix * f._fix) / num);
+	return (res);
+}
+
+Fixed	Fixed::operator/(const Fixed &f) const
+{
+	Fixed	res;
+	int		num;
+	
+
+	if (f._fix == 0)
+	{
+		std::cerr << "error, divide a number by 0 is not allowed\n";
+		return (res);
+	}
+	num = 1 << fractional;
+	res.setRawBits((this->_fix * num) / f._fix);
+	return (res);
+}
+
+Fixed			Fixed::operator++(const int)
+{
+	Fixed	res;
+
+	res.setRawBits(this->_fix + 1);
+	return (res);
+}
 
 Fixed::~Fixed()
 {
