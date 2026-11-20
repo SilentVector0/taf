@@ -101,7 +101,7 @@ Fixed	Fixed::operator/(const Fixed &f) const
 {
 	Fixed	res;
 	int		num;
-	
+
 
 	if (f._fix == 0)
 	{
@@ -113,17 +113,73 @@ Fixed	Fixed::operator/(const Fixed &f) const
 	return (res);
 }
 
-Fixed			Fixed::operator++(const int)
+Fixed	Fixed::operator++(const int)
 {
 	Fixed	res;
 
-	res.setRawBits(this->_fix + 1);
+	res.setRawBits(this->_fix);
+	this->setRawBits(res._fix + 1);
 	return (res);
+}
+
+Fixed	&Fixed::operator++()
+{
+	this->setRawBits(this->_fix + 1);
+	return (*this);
+}
+
+Fixed	Fixed::operator--(const int)
+{
+	Fixed	res;
+
+	res.setRawBits(this->_fix);
+	this->setRawBits(this->_fix - 1);
+	return (res);
+}
+
+Fixed			&Fixed::operator--()
+{
+	this->setRawBits(this->_fix - 1);
+	return (*this);
 }
 
 Fixed::~Fixed()
 {
 	std::cout << "destructor call\n";
+}
+
+//!min_max ───────────────────────────────────────────────────────────────
+
+Fixed	&Fixed::min(Fixed &a, Fixed &b)
+{
+	if (a >= b)
+		return (b);
+	else
+		return (a);
+}
+
+const Fixed	&Fixed::min(const Fixed &a, const Fixed &b)
+{
+	if (a >= b)
+		return (b);
+	else
+		return (a);
+}
+
+Fixed	&Fixed::max(Fixed &a, Fixed &b)
+{
+	if (a >= b)
+		return (a);
+	else
+		return (b);
+}
+
+const Fixed	&Fixed::max(const Fixed &a, const Fixed &b)
+{
+	if (a >= b)
+		return (a);
+	else
+		return (b);
 }
 
 //!get_set ───────────────────────────────────────────────────────────────
