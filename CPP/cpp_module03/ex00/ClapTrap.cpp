@@ -1,4 +1,4 @@
-#include " ClapTrap.hpp"
+#include "ClapTrap.hpp"
 #include <iostream>
 #include <climits>
 
@@ -62,4 +62,26 @@ void ClapTrap::takeDamage(unsigned int amount)
 	}
 	_hitPoint -= amount;
 	std::cout << "ClapTrap " << _name << " receiving " << amount << " points of damages!\n";
+}
+
+void ClapTrap::beRepaired(unsigned int amount)
+{
+	if (_energyPoint <= 0)
+	{
+		std::cout << "error, your energy is empty\n";
+		return;
+	}
+	if (_hitPoint <= 0)
+	{
+		std::cout << "error, you are dead\n";
+		return;
+	}
+	if (amount > UINT_MAX - _hitPoint)
+	{
+		std::cout << "error, you are reaching the limit of an unsigned int\n";
+		return;
+	}
+	_energyPoint -= 1;
+	_hitPoint += amount;
+	std::cout << "ClapTrap " << _name << " gain " << amount << ", he has now " << _hitPoint << " HP\n";
 }
