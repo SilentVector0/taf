@@ -1,5 +1,6 @@
 #include " ClapTrap.hpp"
 #include <iostream>
+#include <climits>
 
 //!Forme canonique ───────────────────────────────────────────────────────────────
 
@@ -48,6 +49,17 @@ void ClapTrap::attack(const std::string& target)
 		return;
 	}
 	_energyPoint -= 1;
-	std::cout << "ClapTrap ", _name, " attacks ", target, " causing ", _attackDamega, " points of damage!";
+	std::cout << "ClapTrap " << _name << " attacks " << target << " causing " << _attackDamega << " points of damage!\n";
+}
 
+void ClapTrap::takeDamage(unsigned int amount)
+{
+	if (_hitPoint <= amount)
+	{
+		_hitPoint = 0;
+		std::cout << "ClapTrap " << _name << " died by receiving " << amount << " points of damages!\n";
+		return;
+	}
+	_hitPoint -= amount;
+	std::cout << "ClapTrap " << _name << " receiving " << amount << " points of damages!\n";
 }
