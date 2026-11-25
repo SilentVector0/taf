@@ -4,6 +4,8 @@
 
 int main (void)
 {
+	int i = 0;
+
 	ClapTrap c1;
 	ClapTrap c2("tobias");
 	ClapTrap c3(c2);
@@ -11,6 +13,7 @@ int main (void)
 	ScavTrap s1;
 	ScavTrap s2("jojo");
 	ScavTrap s3(s2);
+	ScavTrap s4("test");
 
 	c1.attack("tobias");
 	c2.takeDamage(0);
@@ -25,5 +28,12 @@ int main (void)
 	s1.takeDamage(20);
 	s1.guardGate();
 	s2.guardGate();
-
+	s2 = s4;
+	s2.attack("jojo");
+	while (i < 50)
+	{
+		s1.attack("jojo");
+		i++;
+	}
+	s1.takeDamage(100);
 }

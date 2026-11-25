@@ -15,12 +15,11 @@ int main (void)
 	c2.attack("toto");
 	c2.attack("toto");
 	c2.beRepaired(UINT_MAX);
-	// c2.attack("toto");
-	// c2.attack("toto");
-	// c2.attack("toto");
-	// c2.attack("toto");
-	// c2.attack("toto");
-	// c2.attack("toto");
-	// c2.attack("toto");
-	// c2.attack("toto");
+	c2.attack("toto");
+	c2.attack("toto");
+	c2.attack("toto");
+	c2.attack("toto");
+	c2.attack("toto");
+	c2.attack("toto");
+	c2.attack("toto");
 }
