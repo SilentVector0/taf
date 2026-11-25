@@ -24,5 +24,35 @@ ScavTrap::ScavTrap(const ScavTrap &c): ClapTrap(c)
 
 ScavTrap &ScavTrap::operator=(const ScavTrap &c)
 {
+	if (this == &c)
+		return (*this);
+	ClapTrap::operator=(c);
+	std::cout << "operator Scavtrap call\n";
+	return (*this);
+}
 
+ScavTrap::~ScavTrap()
+{
+	std::cout << "destructor ScavTrap call\n";
+}
+
+void ScavTrap::attack(const std::string& target)
+{
+	if (_energyPoint <= 0)
+	{
+		std::cout << "error, your energy is empty\n";
+		return;
+	}
+	if (_hitPoint <= 0)
+	{
+		std::cout << "error, you are dead\n";
+		return;
+	}
+	_energyPoint -= 1;
+	std::cout << "ScavTrap " << _name << " drop a big rock on " << target << " causing " << _attackDamega << " PV of damage\n";
+}
+
+void ScavTrap::guardGate()
+{
+	std::cout << "ScavTrap " << _name << " is now in Gate keeper mode\n";
 }
