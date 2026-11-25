@@ -1,11 +1,10 @@
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 #include <climits>
 
 int main (void)
 {
-	int i = 0;
-
 	ClapTrap c1;
 	ClapTrap c2("tobias");
 	ClapTrap c3(c2);
@@ -14,6 +13,11 @@ int main (void)
 	ScavTrap s2("jojo");
 	ScavTrap s3(s2);
 	ScavTrap s4("test");
+
+	FragTrap f1;
+	FragTrap f2("frag1");
+	FragTrap f3(f2);
+	FragTrap f4("frag2");
 
 	c1.attack("tobias");
 	c2.takeDamage(0);
@@ -30,10 +34,11 @@ int main (void)
 	s2.guardGate();
 	s2 = s4;
 	s2.attack("jojo");
-	while (i < 50)
-	{
-		s1.attack("jojo");
-		i++;
-	}
+
 	s1.takeDamage(100);
+
+	f1.highFivesGuys();
+	f1.attack("frag2");
+	f4.takeDamage(30);
+	f2 = f1;
 }

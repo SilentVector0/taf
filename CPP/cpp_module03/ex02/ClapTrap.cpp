@@ -6,17 +6,17 @@
 
 ClapTrap::ClapTrap(): _name("toto"), _hitPoint(10), _energyPoint(10), _attackDamega(0)
 {
-	std::cout << "constructor call\n";
+	std::cout << "ClapTrap constructor call\n";
 }
 
 ClapTrap::ClapTrap(std::string name): _name(name), _hitPoint(10), _energyPoint(10), _attackDamega(0)
 {
-	std::cout << "constructor with name call\n";
+	std::cout << "ClapTrap constructor with name call\n";
 }
 
 ClapTrap::ClapTrap(const ClapTrap &c): _name(c._name), _hitPoint(c._hitPoint), _energyPoint(c._energyPoint), _attackDamega(c._attackDamega)
 {
-	std::cout << "copy constructor call\n";
+	std::cout << "ClapTrap copy constructor call\n";
 }
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &c)
@@ -33,7 +33,7 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &c)
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "destructor call\n";
+	std::cout << "ClapTrap destructor call\n";
 }
 
 void ClapTrap::attack(const std::string& target)
