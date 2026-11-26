@@ -49,7 +49,7 @@ void ScavTrap::attack(const std::string& target)
 		return;
 	}
 	_energyPoint -= 1;
-	std::cout << "ScavTrap " << _name << " drop a big rock on " << target << " causing " << _attackDamega << " PV of damage\n";
+	std::cout << "ScavTrap " << _name << " drop a big rock on " << target << " causing " << _attackDamega << " Point of damage\n";
 }
 
 void ScavTrap::guardGate()
